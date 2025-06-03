@@ -28,7 +28,7 @@ void LCD_WritePicture(uint16_t Xpos, uint16_t Ypos, uint16_t Xsize, uint16_t Ysi
     
     
 	// 1 cycle 100ns
-	// Première partie écriture de l'index
+	// Premiï¿½re partie ï¿½criture de l'index
     DP_RD = 1;
 	DP_RS = 0;
 
@@ -78,7 +78,7 @@ void LCD_WritePicture(uint16_t Xpos, uint16_t Ypos, uint16_t Xsize, uint16_t Ysi
         Nop();
         Nop();
         
-        // Deuxième partie écriture de la donnée
+        // Deuxiï¿½me partie ï¿½criture de la donnï¿½e
         DP_WR = 0;
 
         //DP_WR = 1;
@@ -94,7 +94,7 @@ void LCD_WritePicture(uint16_t Xpos, uint16_t Ypos, uint16_t Xsize, uint16_t Ysi
             
             
             // 1 cycle 100ns
-            // Première partie écriture de l'index
+            // Premiï¿½re partie ï¿½criture de l'index
             DP_RD = 1;
             DP_RS = 0;
 
@@ -132,7 +132,7 @@ void  LCD_COLOR(uint16_t color)
 void LCD_WriteRegAddress( uint8_t Address)
 {
 	// 1 cycle 100ns
-	// Première partie écriture de l'index
+	// Premiï¿½re partie ï¿½criture de l'index
     DP_RD = 1;
 	DP_RS = 0;
 
@@ -164,7 +164,7 @@ void LCD_WriteCOLOR(uint16_t COLOR, uint16_t Size)
     uint16_t i;
     
 	// 1 cycle 100ns
-	// Première partie écriture de l'index
+	// Premiï¿½re partie ï¿½criture de l'index
     DP_RD = 1;
 	DP_RS = 0;
 
@@ -200,7 +200,7 @@ void LCD_WriteCOLOR(uint16_t COLOR, uint16_t Size)
         
         Nop();
         
-        // Deuxième partie écriture de la donnée
+        // Deuxiï¿½me partie ï¿½criture de la donnï¿½e
         DP_WR = 0;
 
         DP_WR = 1;
@@ -220,7 +220,7 @@ void LCD_ReadData( uint16_t *LCD_Datas, uint16_t Size)
     uint8_t LCD_Reg = 0x22;
     uint8_t i = 0;
 	// 1 cycle 100ns
-	// Première partie écriture de l'index
+	// Premiï¿½re partie ï¿½criture de l'index
     DP_RD = 1;
 	DP_RS = 0;
 
@@ -248,7 +248,7 @@ void LCD_ReadData( uint16_t *LCD_Datas, uint16_t Size)
         TRISE |= 0x003F;
         TRISD |= 0x0FFF;
 
-        // Deuxième partie lecture de la donnée
+        // Deuxiï¿½me partie lecture de la donnï¿½e
         DP_RD = 0;
 
         dataread[i] = ((PORTE>>1) & 0x001F);
@@ -270,7 +270,7 @@ void LCD_WriteData( uint16_t *LCD_Datas, uint16_t Size)
     uint16_t i;
     
 	// 1 cycle 100ns
-	// Première partie écriture de l'index
+	// Premiï¿½re partie ï¿½criture de l'index
     DP_RD = 1;
 	DP_RS = 0;
     Nop();
@@ -306,7 +306,7 @@ void LCD_WriteData( uint16_t *LCD_Datas, uint16_t Size)
         
         Nop();
         
-        // Deuxième partie écriture de la donnée
+        // Deuxiï¿½me partie ï¿½criture de la donnï¿½e
         DP_WR = 0;
 
         DP_WR = 1;
@@ -333,7 +333,7 @@ void LCD_WriteReg(uint8_t LCD_Reg, uint16_t LCD_RegValue)
     */
     
 	// 1 cycle 100ns
-	// Première partie écriture de l'index
+	// Premiï¿½re partie ï¿½criture de l'index
     DP_RD = 1;
 	DP_RS = 0;
     Nop();
@@ -368,7 +368,7 @@ void LCD_WriteReg(uint8_t LCD_Reg, uint16_t LCD_RegValue)
     // MSBD to D10 => DP17
     LATD = (LATD & 0xF00F) + ((LCD_RegValue>>4) & 0x0FF0);
   
-    // Deuxième partie écriture de la donnée
+    // Deuxiï¿½me partie ï¿½criture de la donnï¿½e
 	DP_WR = 0;
 
     DP_WR = 1;
@@ -385,7 +385,7 @@ uint16_t LCD_ReadReg(uint8_t LCD_Reg)
 	uint16_t data = 0;
 
 	// 1 cycle 100ns
-	// Première partie écriture de l'index
+	// Premiï¿½re partie ï¿½criture de l'index
     DP_RD = 1;
     DP_WR = 1;
 	DP_RS = 0;
@@ -418,7 +418,7 @@ uint16_t LCD_ReadReg(uint8_t LCD_Reg)
     TRISE |= 0x003F;
     TRISD |= 0x0FFF;
     
-    // Deuxième partie lecture de la donnée
+    // Deuxiï¿½me partie lecture de la donnï¿½e
 	DP_RD = 0;
 
     data = ((PORTE>>1) & 0x001F);
@@ -449,7 +449,7 @@ void init_ILI9320(void)
     //ANSDbits.ANSD6 = 0;
     //ANSDbits.ANSD7 = 0;
     
-    // Bits du bus parallèle 
+    // Bits du bus parallï¿½le 
     TRISE |= 0x003F;
     TRISD |= 0x0FFF;
     
@@ -715,39 +715,5 @@ void ili9320_DrawBitmap(uint16_t Xpos, uint16_t Ypos, uint8_t *pbmp)
   /* AM = 1 (address is updated in vertical writing direction) */
   LCD_WriteReg(0x03, 0x1018);
 }
-
-
-///**
-//  * @brief  Displays picture..
-//  * @param  pdata: picture address.
-//  * @param  Xpos:  Image X position in the LCD
-//  * @param  Ypos:  Image Y position in the LCD
-//  * @param  Xsize: Image X size in the LCD
-//  * @param  Ysize: Image Y size in the LCD
-//  * @retval None
-//  */
-//void ili9320_DrawRGBImage(uint16_t Xpos, uint16_t Ypos, uint16_t Xsize, uint16_t Ysize, uint8_t *pdata)
-//{
-//  uint32_t index = 0, size = 0;
-//
-//  size = (Xsize * Ysize);
-//
-//  /* Set Cursor */
-//  ili9320_SetCursor(Xpos, Ypos);  
-//  
-//  /* Prepare to write GRAM */
-//  LCD_write(0x22);
-// 
-//  for(index = 0; index < size; index++)
-//  {
-//
-//    /* Write 16-bit GRAM Reg */
-//    LCD_WriteData(pdata, size);
-//    pdata += 2;
-//  }
-//}
-
-
-
 
 
